@@ -121,7 +121,7 @@ async function generateComponent() {
       .runActions<ComponentProptNames>({
         ComponentName: name,
         wantMemo: values[0],
-        wantStyledComponents: values[1],
+        wantMaterialComponents: values[1],
         wantLoadable: values[2],
         wantTranslations: values[3],
         wantTests: values[4],
@@ -160,7 +160,7 @@ async function generateContainer() {
         wantHeaders: values[0],
         wantSaga: values[1],
         wantSlice: values[2],
-        wantStyledComponents: true,
+        wantMaterialComponents: true,
         wantLoadable: true,
         wantTranslations: values[3],
         wantTests: values[4],
