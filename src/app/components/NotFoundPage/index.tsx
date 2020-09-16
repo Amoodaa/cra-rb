@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components/macro';
+import { styled } from '@material-ui/core/styles';
 import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
@@ -24,22 +24,21 @@ export function NotFoundPage() {
   );
 }
 
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 320px;
-`;
+const Wrapper = styled('div')({
+  height: '100vh',
+  display: 'flex',
+  'align-items': 'center',
+  'justify-content': 'center',
+  'flex-direction': 'column',
+  'min-height': '320px',
+});
 
-const Title = styled.div`
-  margin-top: -8vh;
-  font-weight: bold;
-  color: black;
-  font-size: 3.375rem;
-
-  span {
-    font-size: 3.125rem;
-  }
-`;
+const Title = styled('div')({
+  'margin-top': '-8vh',
+  'font-weight': 'bold',
+  color: 'black',
+  'font-size': '3.375rem',
+  span: {
+    'font-size': '3.125rem',
+  },
+});

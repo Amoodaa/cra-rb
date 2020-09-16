@@ -15,11 +15,11 @@ import { Helmet } from 'react-helmet-async';
 {{#if wantTranslations}}
 import { useTranslation } from 'react-i18next';
 {{/if}}
+{{#if wantMaterialComponents}}
+// import Component from '@material-ui/core/Component'; // do these on
+{{/if}}
 {{#if wantSlice}}
 import { useSelector, useDispatch } from 'react-redux';
-{{/if}}
-{{#if wantStyledComponents}}
-import styled from 'styled-components/macro';
 {{/if}}
 
 {{#if wantSlice}}
@@ -53,11 +53,11 @@ export function {{ properCase ComponentName }}(props: Props) {
 useInjectReducer({ key: sliceKey, reducer: reducer });
 {{/if}}
 {{#if wantSaga}}
-  {{#if wantSlice}}
-  useInjectSaga({ key: sliceKey, saga: {{ camelCase ComponentName }}Saga });
-  {{else}}
-  useInjectSaga({ key: '{{ camelCase ComponentName }}', saga: {{ camelCase ComponentName }}Saga });
-  {{/if}}
+{{#if wantSlice}}
+useInjectSaga({ key: sliceKey, saga: {{ camelCase ComponentName }}Saga });
+{{else}}
+useInjectSaga({ key: '{{ camelCase ComponentName }}', saga: {{ camelCase ComponentName }}Saga });
+{{/if}}
 {{/if}}
 
 {{#if wantSlice}}
@@ -80,19 +80,11 @@ return (
     <meta name="description" content="Description of {{properCase ComponentName}}" />
   </Helmet>
   {{/if}}
-  {{#if wantStyledComponents}}
-  <Div>
-    {{else}}
-    <div>
-      {{/if}}
-      {{#if wantTranslations}}
-      {t('')}
-      {{/if}}
-      {{#if wantStyledComponents}}
-    </Div>
-    {{else}}
+  <div>
+    {{#if wantTranslations}}
+    {t('hello im {{ properCase ComponentName }}')}
+    {{/if}}
   </div>
-  {{/if}}
 </>
 );
 
@@ -100,8 +92,4 @@ return (
 });
 {{else}}
 };
-{{/if}}
-
-{{#if wantStyledComponents}}
-const Div = styled.div``;
 {{/if}}

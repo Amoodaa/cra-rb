@@ -10,7 +10,7 @@ import { componentExists } from '../utils';
 export enum ComponentProptNames {
   'ComponentName' = 'ComponentName',
   'wantMemo' = 'wantMemo',
-  'wantStyledComponents' = 'wantStyledComponents',
+  'wantMaterialComponents' = 'wantMaterialComponents',
   'wantTranslations' = 'wantTranslations',
   'wantLoadable' = 'wantLoadable',
   'wantTests' = 'wantTests',
@@ -43,9 +43,9 @@ export const componentGenerator: PlopGenerator = {
     },
     {
       type: 'confirm',
-      name: ComponentProptNames.wantStyledComponents,
-      default: true,
-      message: 'Do you want to use styled-components?',
+      name: ComponentProptNames.wantMaterialComponents,
+      default: false,
+      message: 'Do you want to use Material UI components?',
     },
     {
       type: 'confirm',

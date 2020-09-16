@@ -13,7 +13,7 @@ export enum ContainerProptNames {
   'wantHeaders' = 'wantHeaders',
   'wantSlice' = 'wantSlice',
   'wantSaga' = 'wantSaga',
-  'wantStyledComponents' = 'wantStyledComponents',
+  'wantMaterialComponents' = 'wantMaterialComponents',
   'wantTranslations' = 'wantTranslations',
   'wantLoadable' = 'wantLoadable',
   'wantTests' = 'wantTests',
@@ -42,6 +42,12 @@ export const containerGenerator: PlopGenerator = {
     },
     {
       type: 'confirm',
+      name: ContainerProptNames.wantMaterialComponents,
+      default: false,
+      message: 'Do you want to use Material UI components?',
+    },
+    {
+      type: 'confirm',
       name: ContainerProptNames.wantMemo,
       default: false,
       message: 'Do you want to wrap your component in React.memo?',
@@ -64,12 +70,6 @@ export const containerGenerator: PlopGenerator = {
       name: ContainerProptNames.wantSaga,
       default: true,
       message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
-    },
-    {
-      type: 'confirm',
-      name: ContainerProptNames.wantStyledComponents,
-      default: true,
-      message: 'Do you want to use styled-components?',
     },
     {
       type: 'confirm',

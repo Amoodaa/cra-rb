@@ -8,8 +8,8 @@ import React, { memo } from 'react';
 {{else}}
 import React from 'react';
 {{/if}}
-{{#if wantStyledComponents}}
-import styled from 'styled-components/macro';
+{{#if wantMaterialComponents}}
+// import Component from '@material-ui/core/Component'; // do these on
 {{/if}}
 {{#if wantTranslations}}
 import { useTranslation } from 'react-i18next';
@@ -22,33 +22,23 @@ export const {{ properCase ComponentName }} = memo((props: Props) => {
 {{else}}
 export function {{ properCase ComponentName }}(props: Props) {
 {{/if}}
-  {{#if wantTranslations}}
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
-  {{/if}}
+{{#if wantTranslations}}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const { t, i18n } = useTranslation();
+{{/if}}
 
-  return (
-  {{#if wantStyledComponents}}
-  <Div>
-  {{else}}
-  <div>
+return (
+
+
+<div>
+  {{#if wantTranslations}}
+  {t('hello im {{ properCase ComponentName }}')}
   {{/if}}
-    {{#if wantTranslations}}
-    {t('')}
-    {{/if}}
-  {{#if wantStyledComponents}}
-  </Div>
-  {{else}}
-  </div>
-  {{/if}}
-  );
+</div>
+);
 
 {{#if wantMemo}}
 });
 {{else}}
 };
-{{/if}}
-
-{{#if wantStyledComponents}}
-const Div = styled.div``;
 {{/if}}
