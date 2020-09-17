@@ -11,15 +11,14 @@ import 'react-app-polyfill/stable';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import * as serviceWorker from 'serviceWorker';
 import 'sanitize.css/sanitize.css';
+import { HelmetProvider } from 'react-helmet-async';
 
 // Import root app
 import { App } from 'app';
 
-import { HelmetProvider } from 'react-helmet-async';
-
 import { configureAppStore } from 'store/configureStore';
+import * as serviceWorker from './serviceWorker';
 
 // Initialize languages
 import './locales/i18n';
@@ -49,8 +48,9 @@ if (module.hot) {
   // have to be constants at compile-time
   module.hot.accept(['./app', './locales/i18n'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE);
-    const App = require('./app').App;
-    render(App);
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, global-require
+    const { App: HotApp } = require('./app');
+    render(HotApp);
   });
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -15,6 +16,7 @@ const translationsJson = {
 export type TranslationResource = typeof en;
 export type LanguageKey = keyof TranslationResource;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const translations: ConvertedToObjectType<TranslationResource> = {} as any;
 
 /*
@@ -23,6 +25,7 @@ export const translations: ConvertedToObjectType<TranslationResource> = {} as an
  * This is helpful when using the JSON file keys and still have the intellisense support
  * along with type-safety
  */
+// eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
 const convertLanguageJsonToObject = (obj: any, dict: {}, current?: string) => {
   Object.keys(obj).forEach(key => {
     const currentLookupKey = current ? `${current}.${key}` : key;

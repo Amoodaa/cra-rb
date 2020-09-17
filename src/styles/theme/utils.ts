@@ -6,7 +6,7 @@ export const isSystemDark = window?.matchMedia
   : undefined;
 
 export function saveTheme(theme: ThemeKeyType) {
-  window.localStorage && localStorage.setItem('selectedTheme', theme);
+  if (window.localStorage) localStorage.setItem('selectedTheme', theme);
 }
 
 /* istanbul ignore next line */
